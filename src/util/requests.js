@@ -1,0 +1,1 @@
+const authorizationToken = process.env.ZENDESK_AUTHORIZATION_TOKEN;
