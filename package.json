@@ -18,7 +18,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "REACT_APP_API_KEY=$BUILD_ENV react-scripts build", 
     "test": "jest __tests__/ --coverage",
     "eject": "react-scripts eject"
   },

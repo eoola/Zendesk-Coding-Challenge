@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -8,6 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
+import { getRequests } from '../../util/requests';
 
 const columns = [
   { id: 'name', label: 'Name', minWidth: 170 },
@@ -36,7 +37,6 @@ const columns = [
 ];
 
 function createData(name, code, population, size) {
-  console.log(process.env.ZENDESK_AUTHORIZATION_TOKEN)
   const density = population / size;
   return { name, code, population, size, density };
 }
@@ -106,6 +106,10 @@ export default function TicketsTable() {
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
+
+  useEffect(async () => {
+    console.log(await getRequests());
+  })
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
